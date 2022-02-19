@@ -1,0 +1,60 @@
+body {
+    height: 100vh;
+}
+
+a {
+    cursor: pointer;
+}
+
+h2 {
+    color: green;
+}
+
+.bg-light {
+    background-color: green;
+}
+
+.login {
+    background-color: #f0fced;
+    display: flex;
+    flex-direction: row;
+    border-radius: 25px;
+}
+
+.login-image,
+.login-form {
+    width: 50%;
+}
+
+.login-image {
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-warning {
+    width: 100%;
+}
+
+img {
+    width: 75%;
+}
+
+.card {
+    width: 70%;
+    background-color: #cefac3;
+    color: green;
+}
+
+.form-control {
+    background-color: #f0fced;
+}
+
+.forgot {
+    text-align: center;
+}

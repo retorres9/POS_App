@@ -1,3 +1,246 @@
-:host {
-  
+:host {}
+
+a {
+    cursor: pointer;
+}
+
+.navbar {
+    height: 7%;
+}
+
+.task-bar {
+    height: 7%;
+}
+
+.pos-grid {
+    height: 76%;
+}
+
+.bg-light {
+    background-color: #09a659!important;
+}
+
+.bi,
+span {
+    color: #fff;
+}
+
+a {
+    padding: 10px;
+}
+
+.nav-item:hover {
+    background-color: #2e7d32;
+}
+
+.products {
+    display: flex;
+}
+
+.search-bar {
+    width: 75%;
+    position: relative;
+}
+
+#product {
+    position: relative;
+    padding-left: 40px;
+}
+
+.bi-search {
+    color: black;
+    position: absolute;
+    z-index: 10;
+    right: calc(100% - 4%);
+    top: 9px;
+}
+
+.select {
+    width: 25%;
+}
+
+.bi-plus-lg {
+    color: #000;
+}
+
+.sale {
+    width: 75%;
+    position: relative;
+}
+
+.sale .bi {
+    color: #000;
+    position: absolute;
+    top: calc(100% - 75%);
+}
+
+.bi-person-circle {
+    left: 7px;
+}
+
+.bi-pencil-square {
+    right: 40px;
+}
+
+.bi-phone {
+    right: 10px;
+}
+
+.due {
+    width: 15%;
+    text-align: center;
+    font-size: 11px;
+    padding: 3px;
+    background-color: #c5e1a5;
+}
+
+.plus {
+    width: 10%;
+}
+
+thead {
+    background-color: rgb(224, 224, 224);
+}
+
+.remove-btn {
+    background-color: white;
+    border: none;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+}
+
+.total {
+    width: 58%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.pay-now {
+    width: 42%;
+    background-color: #09a659;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.pay-now:hover {
+    background-color: #2e7d32;
+}
+
+.pos-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-footer {
+    padding: 0;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.table {
+    height: 78%;
+    margin-bottom: 0px;
+}
+
+.pos-sale-info {
+    height: 100%;
+}
+
+.totals,
+.discount,
+.payable {
+    padding: 5px;
+    height: calc(100% / 3);
+}
+
+.discount {
+    background-color: #e2e2e2;
+}
+
+.totals,
+.payable {
+    background-color: #f5f5f5;
+}
+
+.sale-info {
+    height: 23%;
+}
+
+.sale-info>* {
+    display: flex;
+}
+
+.sale-info~label {
+    font-weight: bold;
+}
+
+.card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#client {
+    background-color: #fff59d;
+    padding-left: 30px;
+    padding-right: 70px;
+    height: 100%;
+    border: none;
+    width: 100%;
+}
+
+#client:focus-visible {
+    border: 2px solid #ddca1a!important;
+}
+
+#discount {
+    border: none;
+    background-color: #757575;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.plus button {
+    background-color: orange;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+}
+
+.col-7 {
+    width: 58.8%;
+}
+
+.col-5 {
+    width: 41.2%;
+    padding-left: 0px;
+}
+
+// Modal
+.modal-header {
+    background-color: #09a659;
+}
+
+.modal-header>* {
+    color: #fff;
+}
+
+span.required {
+    color: red;
 }
