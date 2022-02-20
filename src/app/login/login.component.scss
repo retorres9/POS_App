@@ -1,5 +1,9 @@
-body {
+.container {
     height: 100vh;
+}
+
+form {
+    height: 100%;
 }
 
 a {
@@ -7,38 +11,44 @@ a {
 }
 
 h2 {
-    color: green;
-}
-
-.bg-light {
-    background-color: green;
+    color: #8699cd;
 }
 
 .login {
-    background-color: #f0fced;
     display: flex;
     flex-direction: row;
+    align-items: center;
     border-radius: 25px;
+    height: 100%;
 }
 
 .login-image,
 .login-form {
     width: 50%;
+    height: 80%;
 }
 
 .login-image {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px 0px 0px 15px;
+    background-color: #dbd2db;
+    border-color: #d9aad9;
+    border-style: solid;
+    border-width: 2px 0px 2px 2px;
 }
 
 .login-form {
+    background: #95b8f1;
+    border-radius: 0px 15px 15px 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.btn-warning {
-    width: 100%;
+    border-color: #568ee7;
+    border-style: solid;
+    border-width: 2px 2px 2px 0;
 }
 
 img {
@@ -47,14 +57,31 @@ img {
 
 .card {
     width: 70%;
-    background-color: #cefac3;
-    color: green;
+    background-color: #ffffff7d;
+    color: #8699cd;
+    font-weight: bold;
+    filter: contrast();
+    border-radius: 10px;
+    position: relative;
 }
 
 .form-control {
-    background-color: #f0fced;
+    background-color: #dbd2db;
+    border: 1px solid #d9aad9;
 }
 
 .forgot {
     text-align: center;
+}
+
+.btn-login {
+    background-color: #d9aad9;
+    width: 100%;
+}
+
+.bi-person-circle {
+    // position: absolute;
+    font-size: 3rem;
+    color: #8699cd;
+    // top: 0;
 }
