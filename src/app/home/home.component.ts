@@ -23,7 +23,10 @@ export class HomeComponent implements OnInit {
 
       }
     )
+  }
 
+  goToInvoice() {
+    this.router.navigate(['invoice']);
   }
 
 }
