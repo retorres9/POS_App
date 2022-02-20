@@ -78,7 +78,7 @@
             <div class="products">
                 <div class="search-bar">
                     <i class="bi bi-search"></i>
-                    <input type="text" name="product" id="product" class="form-control shadow-none">
+                    <input type="text" name="product" id="product" class="form-control shadow-none" (keyup.enter)="searchProduct(product.value)" autocomplete="off" #product>
                 </div>
                 <div class="select">
                     <select class="form-select shadow-none" aria-label="Default select example">
@@ -113,7 +113,20 @@
 <div class="row pos-grid">
     <div class="col-7">
         <div class="row">
-            <div class="col-2">
+            <div class="col-2" *ngFor="let product of products">
+                <div class="card">
+                    <div class="card-body d-flex flex-column">
+                        <img src="assets/images/barcode-80.svg" alt=""> {{product.name}}
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">
+                          <i class="bi bi-cart-plus"></i>
+                          Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-2">
                 <div class="card">
                     <div class="card-body d-flex flex-column">
                         <img src="assets/images/barcode-80.svg" alt=""> Pan integral
@@ -177,20 +190,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
-            <div class="col-2">
-                <div class="card">
-                    <div class="card-body d-flex flex-column">
-                        <img src="assets/images/barcode-80.svg" alt=""> Pan integral
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary btn-sm">
-                          <i class="bi bi-cart-plus"></i>
-                          Add to cart
-                        </button>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="col-5 pos-sale-info">
