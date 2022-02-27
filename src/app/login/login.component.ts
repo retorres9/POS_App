@@ -12,6 +12,7 @@ import { Login } from './models/login.interface';
 export class LoginComponent implements OnInit {
   isLoading: boolean = false;
   loginForm: FormGroup;
+  showAlert: boolean = false;
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -38,9 +39,14 @@ export class LoginComponent implements OnInit {
 
         if (resp[0].password !== '') {
           this.router.navigate(['home']);
+        } else if (resp[0].password === '') {
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          },  2000);
         }
       })
-    }, 3000);
+    }, 1500);
   }
 
 }

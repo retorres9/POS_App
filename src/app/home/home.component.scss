@@ -25,6 +25,10 @@ span {
     color: #fff;
 }
 
+span.qty {
+    color: #acacac;
+}
+
 a {
     padding: 10px;
 }
@@ -247,4 +251,8 @@ thead {
 
 span.required {
     color: red;
+}
+
+.col-sm-8 {
+    padding-left: 20px;
 }

@@ -14,6 +14,16 @@ h2 {
     color: #8699cd;
 }
 
+.shown {
+    visibility: hidden;
+}
+
+// Alert
+.alert {
+    padding: 0rem 1rem;
+}
+
+// end alert
 .login {
     display: flex;
     flex-direction: row;
@@ -66,8 +76,8 @@ img {
 }
 
 .form-control {
-    background-color: #f3ddf3;
-    border: 1px solid #d9aad9;
+    background-color: #ddfafb;
+    border: 1px solid #8699cd;
 }
 
 .forgot {
