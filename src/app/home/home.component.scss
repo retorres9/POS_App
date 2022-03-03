@@ -1,5 +1,3 @@
-:host {}
-
 a {
     cursor: pointer;
 }
@@ -159,11 +157,10 @@ thead {
     padding: 0;
 }
 
-.table {
-    height: 78%;
-    margin-bottom: 0px;
-}
-
+// .table {
+//     height: 78%;
+//     margin-bottom: 0px;
+// }
 .pos-sale-info {
     height: 100%;
 }
@@ -240,19 +237,35 @@ thead {
     padding-left: 0px;
 }
 
-// Modal
-.modal-header {
-    background-color: #09a659;
+.bi-pencil-square,
+.bi-phone {
+    color: #000;
 }
 
-.modal-header>* {
-    color: #fff;
+#discount-type {
+    width: 25%;
+    display: inline-block;
 }
 
-span.required {
-    color: red;
+// Table
+.table-wrapper {
+    height: 78%;
+    overflow-y: hidden;
 }
 
-.col-sm-8 {
-    padding-left: 20px;
+// end table
+// Input
+.qty-input {
+    width: 50px;
 }
+
+// input#qty-input[type="number"]::-webkit-inner-spin-button,
+// input#qty-input[type="number"]::-webkit-outer-spin-button {
+//     margin: 15px;
+// }
+#qty-input {
+    outline: none;
+    border: none;
+}
+
+//

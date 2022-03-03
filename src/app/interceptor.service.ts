@@ -12,9 +12,7 @@ export class MainInterceptor implements HttpInterceptor {
       setHeaders: {
         "apikey": "bEerX@pe.RT!"
       }
-    })
-    console.log(req.headers);
-
+    });
     return next.handle(req);
   }
 }

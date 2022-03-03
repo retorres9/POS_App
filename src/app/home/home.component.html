@@ -90,10 +90,20 @@
         <div class="col-5 d-flex" style="z-index: 10;">
             <div class="sale">
                 <i class="bi bi-person-circle"></i>
-                <i class="bi bi-pencil-square"></i>
-                <i class="bi bi-phone"></i>
-                <input type="text" id="client" class="client-input">
+
+
+                <select name="client" id="client">
+                  <option *ngFor="let customer of customers$ | async">
+                    {{customer.customer_name}} ({{customer.nric}})
+                  </option>
+                </select>
             </div>
+            <button class="btn shadow-none">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            <button class="btn shadow-none">
+                <i class="bi bi-phone"></i>
+              </button>
             <div class="due">
                 <label for="due"><strong>Due</strong></label>
                 <input type="number" name="due" class="form-control form-control-sm shadow-none">
@@ -111,12 +121,12 @@
     <div class="col-7">
         <div class="row">
             <div class="col-2" *ngFor="let product of products">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body d-flex flex-column">
-                        <img src="assets/images/barcode-80.svg" alt=""> {{product.p_name}}<br>Price: {{product.sell_price | currency}}<br><span class="qty">Qty: {{product.quantity_in_stock}}</span>
+                        <img src="assets/images/barcode-80.svg" alt=""> {{product.p_name | titlecase}}<br>Price: {{product.sell_price | currency}}<br><span class="qty">Qty: {{product.quantity_in_stock}}</span>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary btn-sm shadow-none">
+                        <button class="btn btn-primary btn-sm shadow-none" (click)="addToCart(product)">
                           <i class="bi bi-cart-plus"></i>
                           Add to cart
                         </button>
@@ -126,43 +136,51 @@
         </div>
     </div>
     <div class="col-5 pos-sale-info">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Qty.</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Sub Total</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2</td>
-                    <td>Panceta ahumada</td>
-                    <td>2,790</td>
-                    <td>2,790</td>
-                    <td>
-                        <button class="remove-btn"><strong style="color: red;">&times;</strong></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Qty.</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Sub Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let items of cart; let i = index">
+                        <td>
+                            <input type="number" class="qty-input" min="1" value="1" id="qty-input" [(ngModel)]="items.qty">
+                        </td>
+                        <td>{{items.product}}</td>
+                        <td>{{items.price}}</td>
+                        <td>{{items.total}}</td>
+                        <td>
+                            <button class="remove-btn"><strong style="color: red;">&times;</strong></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="sale-info">
             <div class="row totals">
                 <div class="totals1 col-6">
                     <label for="total"><strong>TOTAL ITEMS 2(2)</strong></label>
                 </div>
                 <div class="totals2 col-6">
-                    <label for="total"><strong>TOTAL $5380</strong></label>
+                    <label for="total"><strong>TOTAL {{total | currency}}</strong></label>
                 </div>
             </div>
             <div class="row discount">
                 <div class="discount1 col-6">
                     <label for="discount" class="me-2">
-                      <strong>DISCOUNT (%)</strong>
+                      <strong>DISCOUNT</strong>
                     </label>
-                    <input style="width: 50px;" type="number" name="discount" id="discount">
+                    <input style="width: 50px;" type="number" name="discount" id="discount" class="me-2" min="0" [(ngModel)]="discount" (change)="updateTotal()">
+                    <select name="discount-type" id="discount-type" class="form-select shadow-none">
+                      <option value="percentage" selected>%</option>
+                      <option value="dollar">$</option>
+                    </select>
 
                 </div>
                 <div class="discount2 col-6">
@@ -171,7 +189,7 @@
             <div class="row payable">
                 <div class="payable1 col-6"></div>
                 <div class="payable2 col-6">
-                    <label for="payable"><strong>PAYABLE AMOUNT $4842</strong></label>
+                    <label for="payable"><strong>PAYABLE AMOUNT {{payableAmount | currency}}</strong></label>
                 </div>
             </div>
         </div>
@@ -190,101 +208,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Create customer</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">Name <span class="required">*</span> </label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="staticEmail" placeholder="Default">
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label text-end">Email <span class="required">*</span> </label>
-                        <div class="col-sm-8">
-                            <input type="email" class="form-control form-control-sm" id="inputPassword" placeholder="email@example.com">
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">Mobile <span class="required">*</span> </label>
-                        <div class="col-sm-8">
-                            <input type="number" class="form-control form-control-sm" id="staticEmail" placeholder="9999999999">
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label text-end">Sex <span class="required">*</span> </label>
-                        <div class="col-sm-8">
-                            <div class="mb-3">
-                                <select class="form-select form-select-sm" name="" id="">
-                              <option selected>Male</option>
-                              <option>Female</option>
-                            </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">Age <span class="required">*</span> </label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="staticEmail" placeholder="30">
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label text-end">Address</label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" name="" id="" rows="2" placeholder="Earth"></textarea>
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">City</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="staticEmail" placeholder="Noida">
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">State</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="staticEmail" placeholder="Uttar Pradesh">
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">Country</label>
-                        <div class="col-sm-8">
-                            <select type="text" class="form-select form-select-sm" id="staticEmail" value="email@example.com">
-                              <option selected>IN - India(+91)</option>
-                              <option>EC - Ecuador(+593)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">Status <span class="required">*</span> </label>
-                        <div class="col-sm-8">
-                            <select class="form-select form-select-sm" id="staticEmail" value="email@example.com">
-                              <option selected>Active</option>
-                              <option selected>Disabled</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end">Position <span class="required">*</span> </label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="staticEmail" placeholder="1">
-                        </div>
-                    </div>
-                    <div class="mb-2 row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label text-end"></label>
-                        <div class="col-sm-8">
-                            <button type="button" class="btn btn-primary">Save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-customer></app-customer>
 </div>
 
 

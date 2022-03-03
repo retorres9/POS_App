@@ -1,7 +1,7 @@
 export interface Product {
   status:    number;
   registros: Registro[];
-  message:   Message[];
+  message:   Message;
 }
 
 export interface Message {

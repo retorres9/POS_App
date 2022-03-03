@@ -1,9 +1,9 @@
-export interface Customer {
+export interface CustomerDto {
   status:  number;
-  message: Message[];
+  message: CustomerMessage[];
 }
 
-export interface Message {
+export interface CustomerMessage {
   customer_id:      number;
   customer_name:    string;
   customer_email:   string;

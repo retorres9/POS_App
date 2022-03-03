@@ -5,9 +5,11 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
+import { CustomerComponent } from './customer/customer.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [HomeComponent],
-  imports: [CommonModule, SharedModule, HomeRoutingModule]
+  declarations: [HomeComponent, CustomerComponent],
+  imports: [CommonModule, SharedModule, HomeRoutingModule, ReactiveFormsModule]
 })
 export class HomeModule {}
