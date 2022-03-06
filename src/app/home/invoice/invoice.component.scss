@@ -1,17 +1,42 @@
 // Main setting
 nav {
-    background-color: #2e7d32 !important;
+    background-color: #09a659 !important;
     height: 7%;
 }
 
 main {
-    height: 83%;
+    height: 100%;
+    display: flex;
+}
+
+section {
+    width: 20%;
+}
+
+.container {
+    width: 80%;
 }
 
 footer {
     height: 10%;
 }
 
+li {
+    list-style: none;
+    background-color: #09a659;
+}
+
+// sidebar
+ul {
+    padding-left: 0px;
+}
+
+li {
+    padding: 10px 20px;
+    color: #fff;
+}
+
+// end sidebar
 // end main setting
 .btn.btn-success {
     font-size: 18px;
